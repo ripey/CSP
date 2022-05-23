@@ -1,0 +1,69 @@
+// Riley Moy + Andy Ng
+//coded by Andy, designed by Riley
+/*Sources:
+https://www.nationalgeographic.com/animals/mammals/facts/grizzly-bear
+https://www.nbcchicago.com/news/local/wildlife-officials-tracking-black-bear-in-southern-illinois/2536297/
+https://idfg.idaho.gov/press/black-bear-hunters-urged-use-increased-caution-after-grizzly-spotted-unit-10
+*/
+
+hideElement("bearSprayText");
+hideElement("makeNoiseText");
+hideElement("noFoodText");
+onEvent("blackBear", "click", function( ) {
+	setScreen("blackBearScreen");
+	playSound("sound://category_animals/bear.mp3");
+	console.log("blackBear clicked!");
+});
+onEvent("grizzlyBear", "click", function ( ){
+  setScreen("grizzlyScreen");
+	playSound("sound://category_animals/bear.mp3");
+  console.log("grizzlyBear clicked!");
+});
+onEvent("homeButton1", "click", function (){
+  setScreen("homeScreen");
+  console.log("homeScreen");
+});
+onEvent("homeButton2", "click", function (){
+  setScreen("homeScreen");
+  console.log("homeScreen");
+} );
+onEvent("homeButton3", "click", function (){
+  setScreen("homeScreen");
+  console.log("homeScreen");  
+});
+onEvent("preparationButton2", "click", function (){
+  setProperty("bearSpray", "hidden", false);
+  setProperty("makeNoise", "hidden", false);
+  setProperty("noFood", "hidden", false);
+  setProperty("bearSprayText", "hidden", true);
+  setProperty("makeNoiseText", "hidden", true);
+  setProperty("noFoodText", "hidden", true);
+  setScreen("preparation");
+  console.log("preparation");
+});
+onEvent("preparationButton1", "click", function (){
+  setProperty("bearSpray", "hidden", false);
+  setProperty("makeNoise", "hidden", false);
+  setProperty("noFood", "hidden", false);
+  setProperty("bearSprayText", "hidden", true);
+  setProperty("makeNoiseText", "hidden", true);
+  setProperty("noFoodText", "hidden", true);
+  setScreen("preparation");
+  console.log("preparation");
+});
+
+
+onEvent("bearSpray", "mouseout", function(){
+  setProperty("bearSpray", "hidden", true);
+  setProperty("bearSprayText", "hidden", false);  
+});
+
+onEvent("makeNoise","mousemove" , function(){
+  setProperty("makeNoise", "hidden", true);
+  setProperty("makeNoiseText", "hidden", false);
+} );
+
+onEvent("noFood","mousemove" , function(){
+  setProperty("noFood", "hidden", true);
+  setProperty("noFoodText", "hidden", false);
+} );
