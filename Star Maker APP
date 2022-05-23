@@ -1,0 +1,100 @@
+//variables
+var length;
+var color;
+var thickness;
+var starName;
+
+//button codes
+//resets screen
+setScreen("titleScreen");
+
+
+onEvent("drawStarButton", "click", function(event) { 
+  console.log("drawStarButton clicked!");
+  getInputs();
+  drawStar(length, color);
+  setText("nameOutput", starName);
+});
+
+onEvent("retryButton", "click", function(event) {
+  console.log("retryButton clicked!");
+  setScreen("inputScreen");
+  screenClear();
+});
+
+onEvent("nextButton", "click", function( ) {
+  console.log("nextButton clicked!");
+  setScreen("drawScreen");
+});
+
+onEvent("titleButton", "click", function( ) {
+  console.log("titleButton clicked!");
+  setScreen("inputScreen");
+});
+
+
+
+
+//functions
+
+//function that gets all the inputs
+function getInputs (){
+  length = getText("lengthInput1");
+  color = getText("colorDropDown");
+  thickness = getText("thicknessInput");
+  starName = getText("nameInput");
+  
+  if (color == "light gray"){ 
+  color = "#d3d3d3";
+  } else if (color == "light green"){
+  color = "#90ee90";
+  } else if (color == "light red")
+  color = "#cd5c5c";
+}
+
+
+//function that will draw the star altogether
+function drawStar(length, color) {
+  hide();
+  penDown();
+ penWidth(thickness);
+  penColor(color);
+  for (var i = 0; i < 6; i++) {
+    lengthDraw();
+    turnRight(144);
+  }
+return length, color;
+}
+
+//function that creates the desired length
+function lengthDraw() {
+  penUp();
+  moveTo(159.5, 224.5); 
+  penDown();  
+  moveForward(length); 
+}
+
+
+//this function will clear the screen so the user is able to make another star
+function screenClear(){
+  //resets variables
+ starName = "";
+  
+  setText("nameOutput", starName);
+  hide();
+  var dotSize;
+  penColor("#a8c2ef"); //earases drawing
+  if (length  == 0){
+  dotSize = 1;
+  } else {
+  dotSize = (length ) * 20;
+  }
+  dot(dotSize);
+   //clear label text
+  
+ //resets inputs 
+   length = 0;
+  color = 0;
+ thickness = 0;
+}
+
